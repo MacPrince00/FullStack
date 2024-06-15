@@ -1,0 +1,106 @@
+.footer{
+  /* background-color: #535357; */
+  color: white;
+  font-size: .75rem;
+}
+
+.upper__footer__cover{
+  background-color: #313133;
+  padding: 24px 10px;
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.jumia__star{
+  width: 50px;
+  margin-right: 12px;
+}
+
+.upper__footer p{
+  padding-bottom: 10px;
+}
+
+.footer__input{
+  padding: 14px;
+  font-size: 16px;
+  margin: 12px 0px;
+  border-radius: 6px;
+  border: solid gray 1px;
+}
+
+.mail{
+  position: absolute;
+  color: gray;
+}
+
+.footer__btn{
+  padding: 16px 24px;
+  margin-left: 12px;
+  border-radius: 6px;
+  border: solid  white  1px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer__btn:hover{
+  color: #f68b1e;
+  border-color: #f68b1e;
+}
+
+.form{
+  padding-bottom: 12px;
+}
+
+.accept{
+  color: #f68b1e;
+  cursor: pointer;
+}
+
+.agreement{
+  color: lightgrey;
+  max-width: 400px;
+}
+
+.download__bar{
+  display: flex;
+  align-items: center;
+}
+
+.download__bar div div{
+  padding-top: 12px;
+}
+
+.upper__footer{
+  display: flex;
+  justify-content: space-between;
+  max-width: 1250px;
+  width: 100%;
+
+}
+
+.lower__footer{
+  background-color: #535357;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.footer__title{
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.lower__footer div p{
+  cursor: pointer;
+}
+
+.lower__footer div p:hover,
+.accept:hover{
+  color: #f68b1e;
+  text-decoration: underline;
+}

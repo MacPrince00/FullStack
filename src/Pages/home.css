@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica Neue, Arial, sans-serif;
+}
+.ad_image {
+  width: 100%;
+  margin-bottom: -4px;
+  height: 55px;
+}
+.home__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.home__background {
+  background-image: url("https://ng.jumia.is/cms/0-5-TechWeek/2024/Brand-partners/oraimo/Brand_calendar_Mobile_Slider_.png");
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.first__home {
+  display: flex;
+  max-width: 1550px;
+  margin-top: 15px;
+}
+
+.home__selection {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 6px;
+  margin-right: 40px;
+  color: #313133;
+  height: 100%;
+}
+
+.home__selection div {
+  display: flex;
+  align-items: center;
+  padding: 3px 50px 3px 10px;
+  cursor: pointer;
+}
+
+.home__selection div:hover {
+  color: #f68b1e;
+}
+
+.slide__img {
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.last__header div {
+  margin-left: 40px;
+}
+
+.last__slider__div {
+  background-color: white;
+  border-radius: 6px;
+  width: 218px;
+  margin-bottom: 15px;
+  color: #313133;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.last__header__img {
+  border-radius: 6px;
+}
+
+.last__slider__div div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  margin: 0px;
+}
+
+.last__slider__div div img {
+  width: 35px;
+  margin-right: 12px;
+}
+
+.home__products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  max-width: 1250px;
+  margin-top: 15px;
+  background-color: rgb(236, 236, 236);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  grid-gap: 10px;
+  font-size: 0.75rem;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica Neue, Arial, sans-serif;
+}
+
+.product__img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.product__title {
+  height: 60px;
+  width: 100%;
+}
+
+.product__price {
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.deduct__percent {
+  display: flex;
+  align-items: center;
+}
+
+.percentage {
+  margin-left: 15px;
+  background-color: rgb(236, 236, 236);
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 4px 2px;
+  border-radius: 2px;
+}
+
+.initial__price {
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
+.jumia__express {
+  height: 13px;
+  margin-top: 10px;
+}
+
+.product__btn {
+  width: 100%;
+  background-color: #f68b1e;
+  cursor: pointer;
+  text-align: center;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica Neue, Arial, sans-serif;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 6px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  /* visibility: hidden; */
+}
+
+.product__btn:hover {
+  background-color: #d37415;
+  visibility: initial;
+}
+
+.each__product {
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.clicks {
+  text-decoration: none;
+  color: black;
+}

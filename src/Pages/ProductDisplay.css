@@ -1,0 +1,289 @@
+.productDisplay__page {
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  justify-content: center;
+}
+
+.product__info {
+  background-color: white;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica Neue, Arial, sans-serif;
+  margin: 20px;
+  border-radius: 3px;
+  display: flex;
+  padding: 20px;
+  min-width: 350px;
+  height: auto;
+}
+
+.product__right {
+  margin-right: 20px;
+  width: 40%;
+}
+
+.product__left {
+  width: 60%;
+  grid-template-columns: 1fr;
+}
+
+.productInfo__img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.productDisplay__title {
+  font-size: 1.25rem;
+  padding-bottom: 10px;
+}
+
+.brand {
+  padding-bottom: 20px;
+}
+
+.brand span {
+  color: #264996;
+}
+
+.flash__selling {
+  display: flex;
+  background-color: #e61601;
+  color: white;
+  font-weight: bold;
+  padding: 5px 8px;
+  justify-content: space-between;
+  margin-top: 4px;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.sellsIcon {
+  color: #f68b1e;
+  margin-right: 5px;
+}
+
+.sales {
+  display: flex;
+  align-items: center;
+}
+
+.productDisplay__prices {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.price {
+  font-weight: bold;
+  color: #313133;
+  font-size: 1.5rem;
+  padding-right: 5px;
+}
+
+.formal__price {
+  text-decoration: line-through;
+  color: #75757a;
+  font-size: 1rem;
+  padding-right: 10px;
+}
+
+.productDisplay__percentage {
+  background-color: #fef3e9;
+  color: #f68b1e;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 2px;
+  font-size: 17px;
+  margin-top: 3px;
+}
+
+.stock {
+  color: #75757a;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.shipping__details {
+  color: #313133;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.rating__details {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.star {
+  margin-bottom: 4px;
+  margin-right: 7px;
+}
+
+.display__verified {
+  color: #264996;
+}
+
+.ptd__quant {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.each__quantity {
+  padding: 0px 20px;
+}
+
+.items__added {
+  color: #313133;
+  font-size: 15px;
+  margin-left: 12px;
+}
+
+.promotion {
+  color: #313133;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.promotion__list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #264996;
+}
+
+.display__logo__prd {
+  width: 20px;
+  margin-right: 12px;
+}
+
+.prd__share {
+  color: #313133;
+  font-size: 14px;
+  margin-top: 40px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.facebook {
+  color: #f68b1e;
+}
+
+.delivery__title {
+  padding: 3px;
+  font-weight: bold;
+  color: #313133;
+}
+
+.free__delivery {
+  padding-bottom: 10px;
+  color: #264996;
+}
+
+.dropDown:active {
+  color: #f68b1e;
+}
+
+.location__selection {
+  padding: 3px;
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 15px;
+  color: #313133;
+}
+
+.state {
+  padding: 10px;
+  border: 1px solid #313133;
+  border-radius: 3px;
+  width: 90%;
+  margin-top: 12px;
+}
+
+.locate__me {
+  position: relative;
+}
+
+.locate__me .dropDown {
+  position: absolute;
+  top: 40%;
+  right: 10px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+  z-index: 1;
+  border: 1px solid black;
+  width: 100%;
+  height: 280px;
+  overflow-y: scroll;
+}
+
+.dropdown-menu div {
+  margin-left: 12px;
+  margin-top: 3px;
+}
+
+.dropdown-menu div:hover {
+  cursor: pointer;
+}
+
+.final__ {
+  border-color: #f68b1e;
+}
+
+.drop__ {
+  color: #f68b1e;
+  border-width: 2px;
+}
+
+.show {
+  display: block;
+}
+
+.delivery__icons {
+  border: 1px solid #75757a;
+  height: 40px;
+  margin-right: 10px;
+  width: 40px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #75757a;
+}
+
+.each__prices{
+  display: flex;
+  margin-top: 20px;
+  color: #313133;
+}
+
+.details__design{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.details__design div{
+  font-weight: bold;
+}
+
+.details__design h5{
+  color: #264996;
+}
+
+.adding__main{
+  display: flex;
+}
+
+

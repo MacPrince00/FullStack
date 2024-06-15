@@ -1,0 +1,12 @@
+@media (min-width: 1023px) {
+  .header__logo__phone,
+  .header__logo__menu {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .last__header {
+    display: none;
+  }
+}

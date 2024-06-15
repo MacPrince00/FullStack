@@ -1,0 +1,33 @@
+@media (min-width: 768px) and (max-width: 1023px) {
+  .acc {
+    display: none;
+  }
+
+  .home__products {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .header__logo__phone {
+    display: none;
+  }
+
+  .slide__img {
+    width: 65%;
+  }
+
+  .last__header,
+  .header__logo__menu {
+    display: none;
+  }
+
+  /* product page */
+
+  .product__info {
+    display: grid !important;
+  }
+
+  .product__right,
+  .product__left {
+    width: 100% !important;
+  }
+}
