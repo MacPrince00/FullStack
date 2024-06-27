@@ -5,7 +5,7 @@ import "./Products.css";
 function Products({ allProducts, setAllProducts }) {
   const fetchInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/products");
+      const response = await fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/products");
       if (!response.ok) {
         throw new Error("Failed to fetch products.");
       }
@@ -21,7 +21,7 @@ function Products({ allProducts, setAllProducts }) {
   }, []);
 
  const remove__product = async (id) => {
-   await fetch("http://localhost:3000/api/v1/products", {
+   await fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/products", {
      method: "POST",
      headers: {
        Accept: "application/json",
