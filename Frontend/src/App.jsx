@@ -7,7 +7,7 @@ import Layer from "./components/Layer.jsx";
 import ProductDisplay from "./Pages/ProductDisplay.jsx";
 import SignUp from "./Pages/SignUp.jsx";
 import Authrequired from "./assets/Authrequired.jsx";
-
+//sss
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [savedName, setSavedName] = useState();
