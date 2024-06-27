@@ -62,6 +62,4 @@ app.post("/upload", upload.single("image"), (req, res) => {
     success: 1,
     image_url: `${baseUrl}/${req.file.filename}`,
   });
-  
-     console.log(image_url);
 });
