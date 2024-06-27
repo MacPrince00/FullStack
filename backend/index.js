@@ -55,10 +55,13 @@ const upload = multer({ storage: storage });
 //Creating upload endpoint for images
 app.use("/images", express.static(path.join(__dirname, 'upload', 'images')));
 
+  const baseUrl = `${req.protocol}://${req.hostname}`;
+
+
 app.post("/upload", upload.single("image"), (req, res) => {
-  console.log(req.file.filename);
   res.status(201).json({
     success: 1,
-    image_url: `https://fullstack-backend-bqsv.onrender.com/${req.file.filename}`,
+    image_url: `${baseUrl}/${req.file.filename}`,
+  console.log(image_url);
   });
 });
