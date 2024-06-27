@@ -3,7 +3,6 @@ import "./home.css";
 import "../components/screenSizes/phones.css";
 import "../components/screenSizes/tablets.css";
 import "../components/screenSizes/computer.css";
-import { list } from "../assets/data/list";
 import StoreOutlinedIcon from "@mui/icons-material/StoreOutlined";
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
 import HouseOutlinedIcon from "@mui/icons-material/HouseOutlined";
@@ -18,7 +17,7 @@ import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import { NavLink } from "react-router-dom";
 
-function Home({ addToCart }) {
+function Home({ addToCart, allProducts }) {
   return (
     <>
       <div className="home__background">
@@ -102,30 +101,20 @@ function Home({ addToCart }) {
         </div>
         <div>
           <div className="home__products">
-            {list.map(
-              ({
-                image,
-                title,
-                price,
-                discount,
-                percent,
-                rating,
-                verified,
-                id,
-                count,
-              }) => (
-                <div className="each__product" key={id}>
-                  <NavLink to={title} className="clicks">
+            {allProducts.map(
+              ({ image, productName, newPrice, oldPrice, _id }) => (
+                <div className="each__product" key={_id}>
+                  <NavLink to={_id} className="clicks">
                     <img className="product__img" src={image} />
-                    <p className="product__title">{title}</p>
-                    <p className="product__price">&#x20A6;{(price).toLocaleString()}</p>
+                    <p className="product__title">{productName}</p>
+                    <p className="product__price">
+                      &#x20A6;{newPrice.toLocaleString()}
+                    </p>
                     <div className="deduct__percent">
-                      <div className="initial__price">&#x20A6;{discount}</div>
-                      <div className="percentage">{percent}</div>
+                      <div className="initial__price">&#x20A6;{oldPrice}</div>
+                      <div className="percentage">{40}%</div>
                     </div>
-                    <div>
-                      {rating} ({verified})
-                    </div>
+                    <div>⭐⭐⭐⭐ ({67})</div>
                     <img
                       className="jumia__express"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOEGmYEqltfYO-lcm5yimMwMJPvhnaW-3aDyVfUxA&s"
@@ -134,7 +123,7 @@ function Home({ addToCart }) {
                   <button
                     className="product__btn"
                     onClick={() => {
-                      addToCart({ image, title, price, count, id });
+                      addToCart(_id);
                     }}
                   >
                     ADD TO CART

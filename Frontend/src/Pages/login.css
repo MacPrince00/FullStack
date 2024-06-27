@@ -54,6 +54,12 @@
   font-size: 14px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   width: 539px;
+  cursor: pointer;
+}
+
+.login__btn:hover {
+  background-color: #d37415;
+  visibility: initial;
 }
 
 .text {
@@ -90,4 +96,17 @@
 .message {
   color: rgb(224, 2, 2);
   margin-top: 20px;
+}
+
+.acc__existence{
+  margin-top: 12px;
+}
+
+.acc__existence span{
+  color: blue;
+  font-weight: bold;
+}
+
+.acc__existence span:hover{
+  cursor: pointer;
 }

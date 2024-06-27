@@ -1,0 +1,59 @@
+.orders {
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.order__list {
+  width: 70%;
+  background-color: white;
+  margin: 20px 0px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.each__order__list {
+  display: flex;
+  width: 100%;
+}
+
+.product__order__img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.order__details {
+  width: 60%;
+  margin-left: 10px;
+}
+
+.order__details div{
+  margin-bottom: 5px;
+}
+
+.order__title {
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.order__progress button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  border: none;
+  color: white;
+  background-color: #f68b1e;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+}

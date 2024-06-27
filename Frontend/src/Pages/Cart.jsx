@@ -5,59 +5,69 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import { NavLink } from "react-router-dom";
 
-function Cart({ cartItems, setCartItems }) {
-  const removeItem = (name) => {
-    let newPeople = cartItems.filter((prod) => prod.title !== name.name);
-    setCartItems(newPeople);
-    console.log(cartItems);
+function Cart({ cart, setCart }) {
+  const removeItem = (id) => {
+    fetch("http://localhost:3000/api/v1/removefromcart", {
+      method: "POST",
+      headers: {
+        Accept: "application/form-data",
+        "auth-token": `${localStorage.getItem(`auth-token`)}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ itemId: id }),
+    })
+      .then((response) => response.json())
+      .then((data) => setCart(data))
+      .catch((error) => console.error("Error removing item from cart:", error));
   };
 
   const incrementCount = (id) => {
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        // Increment the count of the matching product
-        return { ...item, count: item.count + 1 };
-      }
-      return item;
-    });
+    fetch("http://localhost:3000/api/v1/addcart", {
+      method: "POST",
+      headers: {
+        Accept: "application/form-data",
+        "auth-token": `${localStorage.getItem(`auth-token`)}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ itemId: id }),
+    })
+    .then((response) => response.json())
+    .then((data) => setCart(data));
 
     // Update the cartItems state with the modified array
-    setCartItems(updatedCartItems);
+    // setCart(updatedCartItems);
   };
 
   const decrementCount = (id) => {
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        if (item.count === 1) {
-          return { ...item };
-        } else {
-          return { ...item, count: item.count - 1 };
-        }
-      }
-      return item;
-    });
-
-    // Update the cartItems state with the modified array
-    setCartItems(updatedCartItems);
+    fetch("http://localhost:3000/api/v1/reducecart", {
+      method: "POST",
+      headers: {
+        Accept: "application/form-data",
+        "auth-token": `${localStorage.getItem(`auth-token`)}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ itemId: id }),
+    })
+      .then((response) => response.json())
+      .then((data) => setCart(data));
   };
   return (
     <div className="cart__page">
       <div className="inner__cart__page">
         <div className="cart__display">
-          Cart (
-          {cartItems.length === 0
-            ? "Add Item(s)"
-            : cartItems.reduce((total, cart) => total + cart.count, 0)}
-          )
+          Cart {" "}
+          {cart.length === 0
+            ? "No Item In Cart"
+            : `(${cart.reduce((total, cart) => total + cart.count, 0)})`}
         </div>
-        {cartItems.map((cart) => (
-          <div className="per__cart" key={cart.id}>
+        {cart.map((cart) => (
+          <div className="per__cart" key={cart._id}>
             <hr color="lightgray" size="1" />
             <div className="cart__details">
               <img className="cart__product__image" src={cart.image} />
               <div className="cart__title">
-                <NavLink to={`/${cart.title}`} className="clicks">
-                  <div className="each__title">{cart.title}</div>
+                <NavLink to={`/${cart._id}`} className="clicks">
+                  <div className="each__title">{cart.productName}</div>
                 </NavLink>
                 <div className="in__stocks">In Stock</div>
                 <img
@@ -66,13 +76,13 @@ function Cart({ cartItems, setCartItems }) {
                 />
               </div>
               <div className="cart__price">
-                &#x20A6;{(cart.price * cart.count).toLocaleString()}
+                &#x20A6;{(cart.newPrice * cart.count).toLocaleString()}
               </div>
             </div>
             <div className="cart__quantity">
               <div
                 className="cart__delete"
-                onClick={() => removeItem({ name: cart.title })}
+                onClick={() => removeItem(cart.productName)}
               >
                 <DeleteOutlineOutlinedIcon /> REMOVE
               </div>
@@ -80,7 +90,7 @@ function Cart({ cartItems, setCartItems }) {
                 <button
                   className="subtract__btn"
                   onClick={() => {
-                    decrementCount(cart.id);
+                    decrementCount(cart.productName);
                   }}
                 >
                   <RemoveOutlinedIcon />
@@ -89,7 +99,7 @@ function Cart({ cartItems, setCartItems }) {
                 <button
                   className="add__btn"
                   onClick={() => {
-                    incrementCount(cart.id);
+                    incrementCount(cart.productName);
                   }}
                 >
                   <AddOutlinedIcon />
@@ -107,8 +117,8 @@ function Cart({ cartItems, setCartItems }) {
             <strong>Subtotal</strong>
             <div className="cart__price">
               &#x20A6;{" "}
-              {cartItems
-                .reduce((total, cart) => total + cart.price * cart.count, 0)
+              {cart
+                .reduce((total, cart) => total + cart.newPrice * cart.count, 0)
                 .toLocaleString()}
             </div>
           </div>
@@ -117,9 +127,15 @@ function Cart({ cartItems, setCartItems }) {
           <div className="div__cover">
             <button className="product__btn">
               CHECKOUT (&#x20A6;
-              {cartItems
-                .reduce((total, cart) => total + cart.price * cart.count, 0)
-                .toLocaleString()}
+              {
+                //cart.reduce((total, cart) => total + cart.count, 0)
+                cart
+                  .reduce(
+                    (total, cart) => total + cart.newPrice * cart.count,
+                    0
+                  )
+                  .toLocaleString()
+              }
               )
             </button>
           </div>

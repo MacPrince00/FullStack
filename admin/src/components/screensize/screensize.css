@@ -1,0 +1,16 @@
+@media (max-width: 767px) {
+  .each__order__list{
+    flex-direction: column;
+  }
+
+  .product__order__img{
+    margin-bottom: 10px;
+  }
+
+  .order__progress{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+}
