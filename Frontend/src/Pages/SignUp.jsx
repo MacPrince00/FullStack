@@ -22,7 +22,7 @@ function SignUp({ savedName, setSavedName }) {
 
   const login = async () => {
     let responseData;
-    await fetch("http://localhost:3000/api/v1/login", {
+    await fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/login", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -43,7 +43,7 @@ function SignUp({ savedName, setSavedName }) {
 
   const signup = async () => {
     let responseData;
-    await fetch("http://localhost:3000/api/v1/adduser", {
+    await fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/adduser", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
