@@ -23,7 +23,7 @@ function AddProducts() {
     const form = document.getElementById("productForm");
     const formData = new FormData(form);
 
-    await fetch("http://localhost:3000/upload", {
+    await fetch("https://fullstack-backend-bqsv.onrender.com/upload", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -38,7 +38,7 @@ function AddProducts() {
     if (responseData.success) {
       product.image = responseData.image_url;
 
-      await fetch("http://localhost:3000/api/v1/addproducts", {
+      await fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/addproducts", {
         method: "POST",
         headers: {
           Accept: "application/json",
