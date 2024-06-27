@@ -13,7 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1", product);
 
-//Database Connection with MongoDB
 
 const start = async () => {
   try {
