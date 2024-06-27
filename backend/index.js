@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const baseUrl = process.env.BASE_URL;
 const port = process.env.PORT || 3000;
 const product = require("./routes/routes");
 const mongoose = require("mongoose");
@@ -57,7 +58,6 @@ app.use("/images", express.static(path.join(__dirname, 'upload', 'images')));
 
 
 app.post("/upload", upload.single("image"), (req, res) => {
-  const baseUrl = `${req.protocol}://${req.hostname}`;
   res.status(201).json({
     success: 1,
     image_url: `${baseUrl}/${req.file.filename}`,
