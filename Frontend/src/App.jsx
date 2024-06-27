@@ -14,7 +14,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const fetchInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/products");
+      const response = await fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/products");
       if (!response.ok) {
         q;
         throw new Error("Failed to fetch products.");
@@ -28,7 +28,7 @@ function App() {
 
   const fetchCart = () => {
     if (localStorage.getItem(`auth-token`)) {
-      fetch("http://localhost:3000/api/v1/userCart", {
+      fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/userCart", {
         method: "GET",
         headers: {
           Accept: "application/form-data",
@@ -48,7 +48,7 @@ function App() {
 
   const addToCart = (id) => {
     if (localStorage.getItem(`auth-token`)) {
-      fetch("http://localhost:3000/api/v1/addtocart", {
+      fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
