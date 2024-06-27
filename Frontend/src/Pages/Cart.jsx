@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 function Cart({ cart, setCart }) {
   const removeItem = (id) => {
-    fetch("http://localhost:3000/api/v1/removefromcart", {
+    fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/removefromcart", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -22,7 +22,7 @@ function Cart({ cart, setCart }) {
   };
 
   const incrementCount = (id) => {
-    fetch("http://localhost:3000/api/v1/addcart", {
+    fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/addcart", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -39,7 +39,7 @@ function Cart({ cart, setCart }) {
   };
 
   const decrementCount = (id) => {
-    fetch("http://localhost:3000/api/v1/reducecart", {
+    fetch("https://fullstack-backend-bqsv.onrender.com/api/v1/reducecart", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
