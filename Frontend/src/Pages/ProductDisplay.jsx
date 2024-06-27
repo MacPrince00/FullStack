@@ -11,7 +11,6 @@ import WheelchairPickupOutlinedIcon from "@mui/icons-material/WheelchairPickupOu
 import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { list } from "../assets/data/list";
 
 function toggleDropdownMenu() {
   const dropdownMenu = document.getElementById("dropdownMenu");
@@ -28,18 +27,16 @@ function selectOption(option) {
   toggleDropdownMenu(); // Hide the dropdown menu after selection
 }
 
-function ProductDisplay({ addToCart }) {
-  const params = useParams();
-  const [displayHere, setDisplayHere] = useState();
+function ProductDisplay({ addToCart, allProducts }) {
+  const { id } = useParams();
+  const [foundProduct, setFoundProduct] = useState(null);
 
   useEffect(() => {
-    const foundItem = list.find((item) => item.title === params.productName);
-    if (foundItem) {
-      setDisplayHere(foundItem);
-    } else {
-      setDisplayHere(null);
-    }
-  }, [list, params.productName]);
+    const product = allProducts.find((product) => product._id === id);
+    setFoundProduct(product);
+  }, [id, allProducts]);
+
+  console.log(foundProduct);
 
 
   return (
@@ -49,18 +46,18 @@ function ProductDisplay({ addToCart }) {
           <div className="product__right">
             <img
               className="productInfo__img"
-              src={displayHere && displayHere.image}
+              src={foundProduct?.image}
             />
             <div className="prd__share">SHARE THIS PRODUCT</div>
             <FacebookOutlinedIcon className="facebook" />
           </div>
           <div className="product__left">
             <div className="productDisplay__title">
-              {displayHere && displayHere.title}
+              {foundProduct?.productName}
             </div>
             <div className="brand">
               Brand:
-              <span> itel | Similar products from itel</span>
+              <span> {foundProduct?.brand}</span>
             </div>
             <hr color="lightgray" size="1" />
             <div className="flash__selling">
@@ -71,13 +68,13 @@ function ProductDisplay({ addToCart }) {
             </div>
             <div className="productDisplay__prices">
               <div className="price">
-                &#x20A6; {displayHere && displayHere.price}
+                &#x20A6; {foundProduct?.newPrice}
               </div>
               <div className="formal__price">
-                &#x20A6; {displayHere && displayHere.discount}
+                &#x20A6; {foundProduct?.oldPrice}
               </div>
               <div className="productDisplay__percentage">
-                {displayHere && displayHere.percent}
+                50%
               </div>
             </div>
             <div className="stock">In Stock</div>
@@ -85,9 +82,9 @@ function ProductDisplay({ addToCart }) {
               + shipping from ₦ 2,260 to Owerri-Douglas
             </div>
             <div className="rating__details">
-              <div className="star">{displayHere && displayHere.rating}</div>
+              <div className="star">⭐⭐⭐⭐</div>
               <div className="display__verified">
-                ({displayHere && displayHere.verified})
+                (12)
               </div>
             </div>
             <div className="ptd__quant">
@@ -491,21 +488,21 @@ function ProductDisplay({ addToCart }) {
             <div className="adding__main">
               <img
                 className="cart__product__image"
-                src={displayHere && displayHere.image}
+                src={foundProduct?.image}
               />
               <div className="product__title">
-                {displayHere && displayHere.title}
+                {foundProduct?.productName}
               </div>
             </div>
             <p className="product__price">
-              &#x20A6;{displayHere && displayHere.price}
+              &#x20A6;{foundProduct?.oldPrice}
             </p>
             <div className="deduct__percent">
               <div className="initial__price">
-                &#x20A6;{displayHere && displayHere.discount}
+                &#x20A6;{foundProduct?.newPrice}
               </div>
               <div className="percentage">
-                {displayHere && displayHere.percent}
+                60%
               </div>
             </div>
             <button

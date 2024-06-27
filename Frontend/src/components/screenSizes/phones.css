@@ -96,4 +96,9 @@
   .upper__checkout {
     width: 100% !important;
   }
+
+  .per__cart
+  .cart__price {
+    font-size: 15px;
+  }
 }

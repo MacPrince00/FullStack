@@ -3,24 +3,10 @@ import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 
-function Layer({
-  signupForm,
-  cartItems,
-  isLoggedIn,
-  setIsLoggedIn,
-  saveLogIN,
-  saveEmail,
-}) {
+function Layer({ cart, savedName }) {
   return (
     <>
-      <Header
-        signupForm={signupForm}
-        cartItems={cartItems}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        saveLogIN={saveLogIN}
-        saveEmail={saveEmail}
-      />
+      <Header cart={cart} savedName={savedName} />
       <Outlet />
       <Footer />
     </>

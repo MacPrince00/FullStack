@@ -28,7 +28,7 @@ import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 // import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
-function Header({ signupForm, cartItems, isLoggedIn, setIsLoggedIn }) {
+function Header({ cart, savedName }) {
   function toggleDropdownMenu() {
     const dropdownMenu = document.getElementById("header__dropdownMenu");
     const helpdropdown = document.getElementById("helpList");
@@ -55,10 +55,6 @@ function Header({ signupForm, cartItems, isLoggedIn, setIsLoggedIn }) {
     }
   }
 
-  function changeIsLogged() {
-    setIsLoggedIn(false);
-  }
-
   function showMenu() {
     const menus = document.getElementById("menu__select");
     if (menus.classList.contains("showIT")) {
@@ -72,14 +68,6 @@ function Header({ signupForm, cartItems, isLoggedIn, setIsLoggedIn }) {
 
   return (
     <div className="general">
-      {/* <img
-        className="ad_image"
-        src="https://ng.jumia.is/cms/0-5-TechWeek/2024/Brand-days/BINATONE/Binatone_Desktop_Topstrip.gif"
-      />
-      <div className="upper_header">
-        <div>Sell on Jumia</div>
-        <div>Jumia Pay</div>
-      </div> */}
       <div className="cover__cover">
         <div className="cover">
           <div className="header">
@@ -169,9 +157,7 @@ function Header({ signupForm, cartItems, isLoggedIn, setIsLoggedIn }) {
                 }}
               >
                 {<PermIdentityOutlinedIcon />}
-                <div className="hide__menu">
-                  {isLoggedIn ? signupForm.email : "Account"}
-                </div>
+                <div className="hide__menu">Account</div>
                 <div className="hide__menu">
                   {<KeyboardArrowDownOutlinedIcon />}
                 </div>
@@ -197,22 +183,22 @@ function Header({ signupForm, cartItems, isLoggedIn, setIsLoggedIn }) {
                     Voucher
                   </div>
                   <hr color="lightgray" size="1" />
-                  <h5>
-                    {isLoggedIn ? (
+                  <div className="login__Link">
+                    {localStorage.getItem("auth-token") ? (
                       <div
-                        className="login__Link"
                         onClick={() => {
-                          changeIsLogged();
+                          localStorage.removeItem("auth-token");
+                          window.location.replace("/");
                         }}
                       >
                         LOGOUT
                       </div>
                     ) : (
                       <Link className="login__Link" to="/signup">
-                        LOGIN
+                        <div>LOGIN</div>
                       </Link>
                     )}
-                  </h5>
+                  </div>
                 </div>
               </div>
               <div
@@ -244,7 +230,7 @@ function Header({ signupForm, cartItems, isLoggedIn, setIsLoggedIn }) {
               <NavLink to="cart" className="now">
                 <div className="acc">
                   <div className="cartLength">
-                    {cartItems.reduce((total, cart) => total + cart.count, 0)}
+                    {cart.reduce((total, cart) => total + cart.count, 0)}
                   </div>
                   {<ShoppingCartOutlinedIcon />}
                   <div className="hide__menu">Cart</div>

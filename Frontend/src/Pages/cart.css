@@ -29,7 +29,6 @@
 
 .cart__details {
   display: flex;
-  justify-content: space-around;
   padding-top: 20px;
 }
 
@@ -51,6 +50,7 @@
 .cart__title {
   padding-right: 120px;
   padding-top: 8px;
+  width: 56%
 }
 
 .in__stocks {
@@ -59,7 +59,7 @@
 }
 
 .cart__product__image {
-  width: 100px;
+  width: 20%;
   padding-right: 20px;
 }
 
@@ -153,3 +153,6 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+
+

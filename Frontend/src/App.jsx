@@ -9,70 +9,86 @@ import SignUp from "./Pages/SignUp.jsx";
 import Authrequired from "./assets/Authrequired.jsx";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
-  const [signupForm, setSignupForm] = useState({ email: "", password: "" });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [loginForm, setLoginForm] = useState({ email: "", password: "" });
-
-  function saveToCart() {
-    localStorage.setItem('cart', JSON.stringify(cartItems))
-  }
-
-
-  const addToCart = (Products) => {
-    const isProductInCart = cartItems.some(
-      (item) => item.title === Products.title
-    );
-
-    if (!isProductInCart) {
-      setCartItems([...cartItems, Products]);
-    } else {
-      return null;
+  const [allProducts, setAllProducts] = useState([]);
+  const [savedName, setSavedName] = useState();
+  const [cart, setCart] = useState([]);
+  const fetchInfo = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/products");
+      if (!response.ok) {
+        q;
+        throw new Error("Failed to fetch products.");
+      }
+      const data = await response.json();
+      setAllProducts(data.products);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
+  };
 
-    saveToCart()
+  const fetchCart = () => {
+    if (localStorage.getItem(`auth-token`)) {
+      fetch("http://localhost:3000/api/v1/userCart", {
+        method: "GET",
+        headers: {
+          Accept: "application/form-data",
+          "auth-token": `${localStorage.getItem(`auth-token`)}`,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => setCart(data.userData.cartData));
+    }
+  };
+
+  useEffect(() => {
+    fetchInfo();
+    fetchCart();
+  }, []);
+
+  const addToCart = (id) => {
+    if (localStorage.getItem(`auth-token`)) {
+      fetch("http://localhost:3000/api/v1/addtocart", {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "auth-token": `${localStorage.getItem(`auth-token`)}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ itemId: id }),
+      })
+        .then((response) => response.json())
+        .then((data) => setCart(data.userData.cartData))
+        .catch((error) => console.error("Error adding to cart:", error));
+    }
   };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Layer
-              signupForm={signupForm}
-              cartItems={cartItems}
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-            />
-          }
-        >
-          <Route index element={<Home addToCart={addToCart} />} />
-          <Route element={<Authrequired isLoggedIn={isLoggedIn} />}>
+        <Route path="/" element={<Layer cart={cart} savedName={savedName} />}>
+          <Route
+            index
+            element={<Home addToCart={addToCart} allProducts={allProducts} />}
+          />
+          <Route element={<Authrequired />}>
             <Route
               path="cart"
-              element={
-                <Cart cartItems={cartItems} setCartItems={setCartItems} />
-              }
+              element={<Cart cart={cart} setCart={setCart} />}
             />
             <Route
-              path=":productName"
-              element={<ProductDisplay addToCart={addToCart} />}
+              path=":id"
+              element={
+                <ProductDisplay
+                  addToCart={addToCart}
+                  allProducts={allProducts}
+                />
+              }
             />
           </Route>
         </Route>
-        {/* <Route
-          element={<Login loginForm={loginForm} setLoginForm={setLoginForm} />}
-          path="/login"
-        /> */}
         <Route
-          element={
-            <SignUp
-              signupForm={signupForm}
-              setSignupForm={setSignupForm}
-              setIsLoggedIn={setIsLoggedIn}
-            />
-          }
+          element={<SignUp savedName={savedName} setSavedName={setSavedName} />}
           path="/signup"
         />
       </Routes>
